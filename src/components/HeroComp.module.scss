@@ -1,44 +1,57 @@
 @use "../sass/variables" as *;
 
 .scene {
-  background-color: $primary-color-alt;
-  height: 100dvh; 
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  position: relative;
-  inset: 0;
   overflow: hidden;
-  max-width: 1440px;
-  margin: auto;
+  background-color: $primary-color-alt;
+  margin: 0;
+}
 
-  // first element: the moon 
-  .moon {
-    width: max(99px, 13vw);
-    height: max(99px, 13vw);
-    background-color: #fff;
-    border-radius: 50%;
-    position: fixed;
-    top: 16%;
-    right: 8%;
-    z-index: 0;
-    box-shadow: 0 0 32px 8px #ffffff;
-  }
 
-  // the moonlight
-  .moonlight{
-    width: max(190px, 12vw);
-		height: max(190px, 12vw);
-		background-color: #ffffff66;
-		border-radius: 50%;
-		position: fixed;
-		top: 8%;
-		right: 0%;
-		z-index: 0;
-		transform-style: preserve-3d;
-		filter: blur(42px);
-        box-shadow: 0 0 32px 20px #ffffff;
-  }
+.scene .bg {
+  position: relative;       
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 120vw;
+  max-width: none;
+
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.scene .lake {
+  position: fixed;
+  width: 110%;
+  bottom: calc(-130px + 20dvh);
+  left: 0;
+  right: 0;
+
+  z-index: 1;              
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.scene .moon {
+  width: max(99px, 13vw);
+  height: max(99px, 13vw);
+  background-color: #fff;
+  border-radius: 50%;
+  position: fixed;
+  top: 16%;
+  right: 8%;
+  z-index: 2;              
+  box-shadow: 0 0 32px 4px #ffffff; 
 }
