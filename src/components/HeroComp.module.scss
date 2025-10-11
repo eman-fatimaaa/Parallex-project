@@ -5,7 +5,7 @@
   width: 100vw;
   min-height: 170vh;
   overflow: hidden;
-  background-color: $primary-color_alt;
+  background-color: $primary-color-alt;
 }
 
 .layer {
@@ -25,12 +25,11 @@
 }
 
 .lake {
-  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100vw;
-  height: 50vh;
+  height: 44vh;
   object-fit: cover;
   object-position: center bottom;
   z-index: 1;
@@ -38,21 +37,21 @@
 }
 
 .house {
-  left: 10vw;
-  bottom: 26vh;
-  width: clamp(170px, 22vw, 360px);
+  left: 8vw;
+  bottom: 21vh;
+  width: clamp(150px, 38vw, 260px);
   height: auto;
   z-index: 2;
 }
 
 .moon {
-  width: max(99px, 13vw);
-  height: max(99px, 13vw);
+  width: clamp(90px, 22vw, 150px);
+  height: clamp(90px, 22vw, 150px);
   background-color: #fff;
   border-radius: 50%;
   position: fixed;
-  top: 14vh;
-  right: 9vw;
+  top: 10vh;
+  right: 8vw;
   z-index: 4;
   box-shadow: 0 0 32px 4px #ffffff;
 }
@@ -60,13 +59,54 @@
 .title {
   position: fixed;
   z-index: 3;
-  top: 26vh;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
+  top: 28vh;
+  right: 8vw;
+  text-align: right;
   text-shadow: 1px 1px 1px #000;
   font-family: 'MedievalSharp', cursive;
-  font-size: clamp(32px, 6vw, 56px);
-  line-height: 1;
+  font-size: clamp(28px, 9vw, 48px);
+  line-height: 1.05;
   color: #e8eefb;
+}
+
+
+.tree {
+  position: fixed;
+  top: -10vh;           
+  left: -34vw;          
+  width: 165vw;         
+  height: auto;
+  filter: blur(3px);   
+  transform-origin: left top;
+  z-index: 3;           
+}
+
+
+.title { z-index: 4; }
+.moon  { z-index: 5; }
+
+
+@media (min-width: 768px) {
+  .tree {
+    top: -8vh;
+    left: -22vw;
+    width: 120vw;
+    filter: blur(2.5px);
+  }
+}
+
+
+
+@media (min-width: 768px) {
+  .lake { height: 50vh; }
+  .house { left: 10vw; bottom: 26vh; width: clamp(170px, 22vw, 360px); }
+  .title {
+    top: 26vh;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: clamp(32px, 6vw, 56px);
+  }
+  .tree { top: calc(8dvh - 100px); left: -15vw; width: min(42vw, 560px); }
 }
