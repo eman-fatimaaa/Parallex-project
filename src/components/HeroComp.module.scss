@@ -3,42 +3,47 @@
 .scene {
   position: relative;
   width: 100vw;
-  
-  min-height: 180vh;
+  min-height: 170vh;
   overflow: hidden;
-  background-color: $primary-color-alt;
+  background-color: $primary-color_alt;
 }
-
 
 .layer {
+  position: fixed;
   pointer-events: none;
   user-select: none;
-  background-repeat: no-repeat;
-  background-position: center bottom;
+  max-width: none;
 }
 
-
-
-
 .bg {
-  position: fixed;
-  inset: 0;                    
-  background-size: cover;      
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140vw;
+  height: auto;
   z-index: 0;
 }
 
-
-.house {
+.lake {
   position: fixed;
-  left: 10vw;
-  bottom: 24vh;                
-  width: clamp(170px, 22vw, 360px);
-  height: clamp(120px, 16vw, 260px);
-  background-size: contain;
-  background-position: left bottom;
-  z-index: 2;                  
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center bottom;
+  z-index: 1;
+  will-change: transform;
 }
 
+.house {
+  left: 10vw;
+  bottom: 26vh;
+  width: clamp(170px, 22vw, 360px);
+  height: auto;
+  z-index: 2;
+}
 
 .moon {
   width: max(99px, 13vw);
@@ -48,20 +53,20 @@
   position: fixed;
   top: 14vh;
   right: 9vw;
-  z-index: 3;
-  box-shadow: 0 0 32px 4px #ffffff; 
+  z-index: 4;
+  box-shadow: 0 0 32px 4px #ffffff;
 }
 
-
-
-
-.lake {
+.title {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;                  
-  height: 48vh;               
-  background-size: cover;     
-  background-position: center bottom;
-  z-index: 1;
+  z-index: 3;
+  top: 26vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  text-shadow: 1px 1px 1px #000;
+  font-family: 'MedievalSharp', cursive;
+  font-size: clamp(32px, 6vw, 56px);
+  line-height: 1;
+  color: #e8eefb;
 }
