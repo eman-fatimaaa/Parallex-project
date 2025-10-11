@@ -3,55 +3,65 @@
 .scene {
   position: relative;
   width: 100vw;
-  min-height: 100vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
+  /* give room so you actually scroll and see the parallax */
+  min-height: 180vh;
   overflow: hidden;
   background-color: $primary-color-alt;
-  margin: 0;
 }
 
-
-.scene .bg {
-  position: relative;       
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 120vw;
-  max-width: none;
-
-  z-index: 0;
+/* base for all visual layers */
+.layer {
   pointer-events: none;
   user-select: none;
+  background-repeat: no-repeat;
+  background-position: center bottom;
 }
 
+/* ---------- FIXED LAYERS ---------- */
 
-.scene .lake {
+/* Background: full viewport, fixed, cover */
+.bg {
   position: fixed;
-  width: 110%;
-  bottom: calc(-130px + 20dvh);
-  left: 0;
-  right: 0;
-
-  z-index: 1;              
-  pointer-events: none;
-  user-select: none;
+  inset: 0;                    /* fill screen */
+  background-size: cover;      /* no edges, ever */
+  z-index: 0;
 }
 
+/* House: fixed left, above shoreline */
+.house {
+  position: fixed;
+  left: 10vw;
+  bottom: 24vh;                /* sits just above the lake */
+  width: clamp(170px, 22vw, 360px);
+  height: clamp(120px, 16vw, 260px);
+  background-size: contain;
+  background-position: left bottom;
+  z-index: 2;                  /* bg(0) < lake(1) < house(2) < moon(3) */
+}
 
-.scene .moon {
+/* Moon: fixed, with glow you asked to keep */
+.moon {
   width: max(99px, 13vw);
   height: max(99px, 13vw);
   background-color: #fff;
   border-radius: 50%;
   position: fixed;
-  top: 16%;
-  right: 8%;
-  z-index: 2;              
-  box-shadow: 0 0 32px 4px #ffffff; 
+  top: 14vh;
+  right: 9vw;
+  z-index: 3;
+  box-shadow: 0 0 32px 4px #ffffff; /* ✨ keep glow */
+}
+
+/* ---------- MOVING LAYER ---------- */
+
+/* Lake: fixed to viewport bottom & width, but translated by framer-motion */
+.lake {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;                  /* align to the bottom edge */
+  height: 48vh;               /* how tall the water occupies on screen */
+  background-size: cover;     /* span full width; no vertical seams */
+  background-position: center bottom;
+  z-index: 1;
 }
