@@ -3,13 +3,13 @@
 .scene {
   position: relative;
   width: 100vw;
-  /* give room so you actually scroll and see the parallax */
+  
   min-height: 180vh;
   overflow: hidden;
   background-color: $primary-color-alt;
 }
 
-/* base for all visual layers */
+
 .layer {
   pointer-events: none;
   user-select: none;
@@ -17,29 +17,29 @@
   background-position: center bottom;
 }
 
-/* ---------- FIXED LAYERS ---------- */
 
-/* Background: full viewport, fixed, cover */
+
+
 .bg {
   position: fixed;
-  inset: 0;                    /* fill screen */
-  background-size: cover;      /* no edges, ever */
+  inset: 0;                    
+  background-size: cover;      
   z-index: 0;
 }
 
-/* House: fixed left, above shoreline */
+
 .house {
   position: fixed;
   left: 10vw;
-  bottom: 24vh;                /* sits just above the lake */
+  bottom: 24vh;                
   width: clamp(170px, 22vw, 360px);
   height: clamp(120px, 16vw, 260px);
   background-size: contain;
   background-position: left bottom;
-  z-index: 2;                  /* bg(0) < lake(1) < house(2) < moon(3) */
+  z-index: 2;                  
 }
 
-/* Moon: fixed, with glow you asked to keep */
+
 .moon {
   width: max(99px, 13vw);
   height: max(99px, 13vw);
@@ -49,19 +49,19 @@
   top: 14vh;
   right: 9vw;
   z-index: 3;
-  box-shadow: 0 0 32px 4px #ffffff; /* ✨ keep glow */
+  box-shadow: 0 0 32px 4px #ffffff; 
 }
 
-/* ---------- MOVING LAYER ---------- */
 
-/* Lake: fixed to viewport bottom & width, but translated by framer-motion */
+
+
 .lake {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 0;                  /* align to the bottom edge */
-  height: 48vh;               /* how tall the water occupies on screen */
-  background-size: cover;     /* span full width; no vertical seams */
+  bottom: 0;                  
+  height: 48vh;               
+  background-size: cover;     
   background-position: center bottom;
   z-index: 1;
 }
