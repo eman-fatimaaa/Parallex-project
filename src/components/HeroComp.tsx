@@ -5,13 +5,10 @@ import styles from "./HeroComp.module.scss";
 import bg from "../assets/bg.png";
 import lake from "../assets/02.png";
 import house from "../assets/04.png";
-import tree from "../assets/06.png";
-import nearMountainsLeft from "../assets/05.png";
-import nearMountainsRight from "../assets/03.png";
-import upCloseTrees from "../assets/treees.png";
 
 export default function HeroComp() {
   const ref = useRef<HTMLElement | null>(null);
+
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
@@ -22,12 +19,21 @@ export default function HeroComp() {
     <section ref={ref} className={styles.scene}>
       <img src={bg} alt="mountains" className={`${styles.layer} ${styles.bg}`} />
       <img src={house} alt="house" className={`${styles.layer} ${styles.house}`} />
-      <motion.img src={lake} alt="lake" className={`${styles.layer} ${styles.lake}`} style={{ y: yLake }} />
-      <img src={upCloseTrees} alt="up close trees" className={`${styles.layer} ${styles.upCloseTrees}`} />
-      <img src={tree} alt="tree branch" className={`${styles.layer} ${styles.tree}`} />
-      <img src={nearMountainsLeft} alt="left mountains" className={`${styles.layer} ${styles.nearMountainsLeft}`} />
-      <img src={nearMountainsRight} alt="right mountains" className={`${styles.layer} ${styles.nearMountainsRight}`} />
-      <h1 className={styles.title}>Medieval Sharpness</h1>
+      <motion.img
+        src={lake}
+        alt="lake"
+        className={`${styles.layer} ${styles.lake}`}
+        style={{ y: yLake }}
+      />
+      <motion.h1
+        className={styles.title}
+        initial={{ opacity: 0, y: -90 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.1, delay: 0.5 }}
+        viewport={{ once: true }}
+      >
+        Medieval Sharpness
+      </motion.h1>
       <div className={styles.moon} />
     </section>
   );
