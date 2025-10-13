@@ -12,26 +12,56 @@ import upCloseTrees from "../assets/treees.png";
 
 export default function HeroComp() {
   const ref = useRef<HTMLElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yLake = useTransform(scrollYProgress, [0, 1], ["0vh", "-14vh"]);
+
+  const { scrollY } = useScroll();
+  const superSlowElement = useTransform(scrollY, [0, 5000], [0, -300]);
 
   return (
     <section ref={ref} className={styles.scene}>
-      <img src={bg} alt="mountains" className={`${styles.layer} ${styles.bg}`} />
+      <img src={bg} alt="background mountains" className={`${styles.layer} ${styles.bg}`} />
+
+      <img src={house} alt="house on the lake" className={`${styles.layer} ${styles.house}`} />
+
+      <motion.img
+        src={lake}
+        alt="lake of the mountain"
+        className={`${styles.layer} ${styles.lake}`}
+      />
 
       <img src={treeBranch} alt="tree branch" className={`${styles.layer} ${styles.tree}`} />
 
-      <img src={nearMountainsLeft} alt="left near mountains" className={`${styles.layer} ${styles.nearMountainsLeft}`} />
-      <img src={nearMountainsRight} alt="right near mountains" className={`${styles.layer} ${styles.nearMountainsRight}`} />
-      <img src={upCloseTrees} alt="up close trees" className={`${styles.layer} ${styles.upCloseTrees}`} />
+      <img
+        src={nearMountainsLeft}
+        alt="left mountains"
+        className={`${styles.layer} ${styles.nearMountainsLeft}`}
+      />
+      <img
+        src={nearMountainsRight}
+        alt="right mountains"
+        className={`${styles.layer} ${styles.nearMountainsRight}`}
+      />
 
-      <h1 className={styles.title}>Medieval Sharpness</h1>
+      <img
+        src={upCloseTrees}
+        alt="up close trees"
+        className={`${styles.layer} ${styles.upCloseTrees}`}
+      />
 
-      <motion.img src={lake} alt="lake" className={`${styles.layer} ${styles.lake}`} style={{ y: yLake }} />
+      <motion.div
+        className={styles.moonWrap}
+        style={{ y: superSlowElement }}
+      >
+        <div className={styles.moon} />
+      </motion.div>
 
-      <img src={house} alt="house" className={`${styles.layer} ${styles.house}`} />
-
-      <div className={styles.moon} />
+      <motion.h1
+        className={styles.title}
+        initial={{ opacity: 0, y: -90 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.1, delay: 0.5 }}
+      >
+        Medieval Sharpness
+      </motion.h1>
     </section>
   );
 }
