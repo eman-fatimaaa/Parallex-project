@@ -1,0 +1,49 @@
+@use "../sass/variables" as *;
+@use "../sass/mixins" as *;
+
+.about {
+  background-color: $tertiary-color-alt;
+  min-height: 90dvh;
+  padding-top: 2em;
+  position: relative;
+  margin-top: 1em;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+
+  h2 {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 73px;
+    max-width: 356px;
+    margin: auto;
+    line-height: 1;
+    font-family: 'MedievalSharp', cursive;
+  }
+
+  .woman {
+    display: block;
+    margin: 0 auto;
+    mix-blend-mode: screen;
+    opacity: 0.45;
+    position: relative;
+    z-index: 1;
+    top: -37dvw;
+    width: 323px;
+  }
+
+  .redDot {
+    width: 450px;
+    height: 450px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    position: absolute;
+    left: -6%;
+    top: 28%;
+    z-index: 0;
+    opacity: 0.3;
+    transform: translate(5%, 0%);
+  }
+}
