@@ -36,6 +36,16 @@
   will-change: transform;
 }
 
+.upCloseTrees {
+  left: -6vw;
+  bottom: -7vh;
+  width: 120vw;
+  min-width: 540px;
+  height: auto;
+  filter: blur(2px);
+  z-index: 3;
+}
+
 .house {
   left: 8vw;
   bottom: 21vh;
@@ -111,4 +121,5 @@
     font-size: clamp(32px, 6vw, 56px);
   }
   .tree { top: -8vh; left: -22vw; width: 120vw; filter: blur(2.5px); }
+  .upCloseTrees { left: -4vw; bottom: -6vh; width: 115vw; }
 }
