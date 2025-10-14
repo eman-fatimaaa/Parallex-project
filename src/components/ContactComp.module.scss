@@ -1,0 +1,104 @@
+@use "../sass/variables" as *;
+
+.contact {
+  background-color: $tertiary-color-alt;
+  min-height: 90dvh;
+  padding-top: 2rem;
+  position: relative;
+  margin-top: 1rem;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: min(92vw, 420px);
+  background: #ffffff;
+  color: #0c1a39;
+  border-radius: 10px;
+  padding: 1.25rem 1.25rem 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+h2 {
+  font-family: "MedievalSharp", cursive;
+  font-size: 40px;
+  text-align: center;
+  margin: 0;
+}
+
+p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #54607a;
+  margin: 0;
+  max-width: 30ch;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #cbd3e1;
+  padding: 0.75rem 0;
+  outline: none;
+  color: #0c1a39;
+}
+
+textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  background: #0c1a39;
+  color: #ffffff;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.error {
+  display: block;
+  margin-top: 0.75rem;
+  text-align: center;
+  color: rgb(156, 1, 1);
+  font-weight: bold;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-4px);
+  }
+  40%,
+  60% {
+    transform: translateX(4px);
+  }
+}
+
+.shake {
+  animation: shake 0.6s;
+}
