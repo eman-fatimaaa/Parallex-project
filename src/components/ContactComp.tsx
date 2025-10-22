@@ -1,52 +1,40 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
+import ContactInfo from "./ContactInfo";
 import styles from "./ContactComp.module.scss";
 
-type TFormData = {
-  name: string;
-  email: string;
-  message: string;
-};
+type TFormData = { name: string; email: string; message: string };
 
 export default function ContactComp() {
-  const [formData, setFormData] = useState<TFormData>({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState<TFormData>({ name: "", email: "", message: "" });
   const [error, setError] = useState<string>("");
-  const [shake, setShake] = useState(false);
-  const btnRef = useRef<HTMLButtonElement | null>(null);
 
   const checkForm = () => {
     if (!formData.name || !formData.email || !formData.message) {
       setError("Please fill out all fields");
+      setTimeout(() => setError(""), 2100);
       return false;
     }
-    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
-    if (!ok) {
+    if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
       setError("Please enter a valid email");
+      setTimeout(() => setError(""), 2100);
       return false;
     }
-    setError("");
     return true;
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!checkForm()) {
-      setShake(true);
-      setTimeout(() => setShake(false), 600);
-      return;
-    }
+    if (!checkForm()) return;
     console.log(formData);
   };
 
   return (
-    <section className={styles.contact} id="contact">
-      <form onSubmit={handleSubmit} className={styles.card}>
+    <section className={styles.contact}>
+      <form onSubmit={handleSubmit} className={styles.contactForm}>
         <h2>Contact Us</h2>
-        <p>Feel Free to contact us any time. We will get back to you as soon as we can.</p>
-        <div className={styles.inputs}>
+        <p>Feel Free to contact us any time. We will get back to you as soon as we can!</p>
+
+        <div className={styles.contactContainer}>
           <input
             type="text"
             placeholder="Name"
@@ -65,12 +53,12 @@ export default function ContactComp() {
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           />
+          <button type="submit" className={error ? styles.shakeHorizontal : ""}>Send</button>
+          {error && <span className={styles.error}>{error}</span>}
         </div>
-        <button ref={btnRef} type="submit" className={shake ? styles.shake : ""}>
-          Send
-        </button>
-        {error && <span className={styles.error}>{error}</span>}
       </form>
+
+      <ContactInfo />
     </section>
   );
 }

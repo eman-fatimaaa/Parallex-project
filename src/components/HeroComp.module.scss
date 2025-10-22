@@ -7,6 +7,9 @@
   overflow: hidden;
   background-color: $primary-color-alt;
   font-family: "Coming Soon", cursive;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .moonLight {
@@ -122,3 +125,4 @@
   width: 110%;
   min-width: 640px;
 }
+

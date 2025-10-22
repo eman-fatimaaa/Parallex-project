@@ -8,6 +8,7 @@ export default function App() {
       <HeroComp />
       <AboutComp />
       <ContactComp />
+      
     </main>
   );
 }
