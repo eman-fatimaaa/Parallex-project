@@ -2,7 +2,7 @@
 @use "../sass/mixins" as *;
 
 .about {
-  background-color: $tertiary-color-alt;
+  background-color: rgb(11, 20, 44);
   min-height: 90dvh;
   padding-top: 2em;
   position: relative;
@@ -25,12 +25,10 @@
 
   .woman {
     display: block;
-    margin: 0 auto;
     mix-blend-mode: screen;
     opacity: 0.45;
     position: relative;
     z-index: 1;
-    top: -37dvw;
     width: 323px;
   }
 
